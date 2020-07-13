@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import { Text, ScrollView } from 'react-native';
 import { Card } from 'react-native-elements';
+import { connect } from 'react-redux';
+
+
+const mapStateToProps = state => {
+    return {
+        coursespage: state.coursespage
+
+    };
+};
 
 class IDTechCourses extends Component {
 
@@ -24,5 +33,37 @@ class IDTechCourses extends Component {
         );
     }
 }
+const styles = StyleSheet.create({
+    scrollContainer: {
+      height,
+    },
+    image: {
+        justifyContent:'center',
+        alignItems:'center', 
+        width,
+        height,
+      },
+    textStyle:{
+        textAlign:'center',
+        fontSize: 20,
+        fontWeight: "bold",
+        color: 'white',
+        backgroundColor:'transparent',
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: {width: -1, height: 1},
+        textShadowRadius: 10
+    },
+    textStyleBottom:{
+        paddingTop: 200,
+        textAlign:'center',
+        fontSize: 15,
+        fontWeight: "bold",
+        color: 'white',
+        backgroundColor:'transparent',
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: {width: -1, height: 1},
+        textShadowRadius: 10
+    }
+  });
 
-export default IDTechCourses;
+export default connect(mapStateToProps)(IDTechCourses);

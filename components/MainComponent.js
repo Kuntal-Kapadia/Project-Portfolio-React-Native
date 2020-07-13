@@ -10,12 +10,14 @@ import IDTechWhyID from './IDTechWhyIDComponent';
 import IDTechOnline from './IDTechOnlineComponent';
 import IDTechCourses from './IDTechCoursesComponent';
 import IDTechRegister from './IDTechRegisterComponent';
+import IDTechVirtual from './IDTechVirtualComponent';
+import IDTechLearning from './IDTechLearningComponent';
 import { View, Platform, StyleSheet, Text, ScrollView,Image } from 'react-native';
 import { createStackNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import SafeAreaView from 'react-native-safe-area-view';
 import { connect } from 'react-redux';
-import { fetchCampsites, fetchComments, fetchPromotions,fetchPartners, fetchHomepagecards, fetchHomepagecarousel } from '../redux/ActionCreators';
+import { fetchCampsites, fetchComments, fetchPromotions,fetchPartners, fetchHomepagecards, fetchHomepagecarousel, fetchWhyidpage, fetchOnlinepage,  fetchOnlinepagecards, fetchLearningpage,fetchVirtualpage,fetchRegisterpage, fetchCoursespage, fetchCoursespagesidebar, fetchCoursespagesearchresults } from '../redux/ActionCreators';
 
 const mapDispatchToProps = {
     fetchCampsites,
@@ -23,7 +25,16 @@ const mapDispatchToProps = {
     fetchPromotions,
     fetchPartners,
     fetchHomepagecards,
-    fetchHomepagecarousel
+    fetchHomepagecarousel, 
+    fetchWhyidpage,
+    fetchOnlinepage,
+    fetchOnlinepagecards, 
+    fetchLearningpage,
+    fetchVirtualpage,
+    fetchRegisterpage, 
+    fetchCoursespage,
+    fetchCoursespagesidebar,
+    fetchCoursespagesearchresults
 };
 
 const DirectoryNavigator = createStackNavigator(
@@ -188,28 +199,59 @@ const  IDTechWhyIDNavigator = createStackNavigator(
         })
     }
 );
+// const IDTechOnlineNavigator = createStackNavigator(
+//     {
+//         IDTechOnline: { screen: IDTechOnline }
+//     },
+//     {
+//         navigationOptions: ({navigation}) => ({
+//             headerStyle: {
+//                 backgroundColor: '#7eb444'
+//             },
+//             headerTintColor: '#fff',
+//             headerTitleStyle: {
+//                 color: '#fff'
+//             },
+//             headerLeft: <Icon
+//                 name='address-card'
+//                 type='font-awesome'
+//                 iconStyle={styles.stackIcon}
+//                 onPress={() => navigation.toggleDrawer()}
+//             />
+//         })
+//     }
+// );
 const IDTechOnlineNavigator = createStackNavigator(
     {
-        IDTechOnline: { screen: IDTechOnline }
+        IDTechOnline: { 
+            screen: IDTechOnline,
+            navigationOptions: ({navigation}) => ({
+                headerLeft: <Icon
+                    name='list'
+                    type='font-awesome'
+                    iconStyle={styles.stackIcon}
+                    onPress={() => navigation.toggleDrawer()}
+                />
+            })
+        },
+        IDTechVirtual: { screen: IDTechVirtual },
+        IDTechLearning: { screen: IDTechLearning },
+
     },
     {
-        navigationOptions: ({navigation}) => ({
+        initialRouteName: 'IDTechOnline',
+        navigationOptions: {
             headerStyle: {
                 backgroundColor: '#7eb444'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
                 color: '#fff'
-            },
-            headerLeft: <Icon
-                name='address-card'
-                type='font-awesome'
-                iconStyle={styles.stackIcon}
-                onPress={() => navigation.toggleDrawer()}
-            />
-        })
+            }
+        }
     }
 );
+
 const IDTechCoursesNavigator = createStackNavigator(
     {
         IDTechCourses: { screen: IDTechCourses }
@@ -427,7 +469,16 @@ class Main extends Component {
         this.props.fetchPromotions();
         this.props.fetchPartners();
         this.props.fetchHomepagecards();
-        this.props.fetchHomepagecarousel()
+        this.props.fetchHomepagecarousel();
+        this.props.fetchWhyidpage();
+        this.props.fetchOnlinepage();
+        this.props.fetchOnlinepagecards();
+        this.props.fetchLearningpage();
+        this.props.fetchVirtualpage();  
+        this.props.fetchCoursespage();
+        this.props.fetchCoursespagesidebar();
+        this.props.fetchCoursespagesearchresults();
+        this.props.fetchRegisterpage()    
     }
     render() {
         return (

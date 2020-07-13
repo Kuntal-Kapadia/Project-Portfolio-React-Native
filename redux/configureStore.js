@@ -8,6 +8,14 @@ import { partners } from './partners';
 import { favorites } from './favorites';
 import { Homepagecards } from './homepagecards';
 import { Homepagecarousel } from './homepagecarousel';
+import { whyidpage } from './whyidpage';
+import { Onlinepage } from './onlinepage';
+import { Learningpage } from './learningpage';
+import { Virtualpage } from './virtualpage';
+import { Registerpage } from './registerpage';
+import { Coursespage } from './coursespage';
+import { Coursespagesidebar } from './coursespagesidebar';
+import { Coursespagesearchresults } from './coursespagesearchresults'
 
 export const ConfigureStore = () => {
     const store = createStore(
@@ -17,8 +25,18 @@ export const ConfigureStore = () => {
             partners,
             promotions, 
             favorites,
+            whyidpage,
             homepagecards: Homepagecards,
-            homepagecarousel : Homepagecarousel
+            homepagecarousel : Homepagecarousel,
+            onlinepage: Onlinepage,
+            onlinepagecards: Onlinepagecards,
+            learningpage: Learningpage,
+            virtualpage: Virtualpage,
+            coursespage: Coursespage,
+            coursespagesidebar:Coursespagesidebar, 
+            coursespagesearchresults:Coursespagesearchresults,
+            registerpage: Registerpage
+            
         }),
         applyMiddleware(thunk, logger)
     );

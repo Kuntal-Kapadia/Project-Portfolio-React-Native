@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { FlatList, View,Text, ScrollView, Image, Dimensions,} from 'react-native';
+import { FlatList, View,Text, ScrollView, Image} from 'react-native';
 import { Card } from 'react-native-elements';
 import { connect } from 'react-redux';
 import Loading from './LoadingComponent';
+import Carousel from './Carousel';
+
+
 
 
 const mapStateToProps = state => {
@@ -13,7 +16,6 @@ const mapStateToProps = state => {
 
 };
 
-
 class IDTechHome extends Component {
 
     static navigationOptions = {
@@ -22,30 +24,6 @@ class IDTechHome extends Component {
 
     render() {     
         const { navigate } = this.props.navigation;
-
-        const renderCarouselDirectoryItem = ({item}) => {
-            return (
-                <Card
-                    title={item.caption}
-                    image={{uri: item.src}}>
-                    <Text
-                        style={{margin: 10}}>
-                        {item.header}
-                    </Text>           
-                </Card>
-            );   
-        }
-
-        if (this.props.homepagecarousel.isLoading) {
-            return <Loading />;
-            }
-        if (this.props.homepagecarousel.errMess) {
-            return (
-                <View>
-                    <Text>{this.props.homepagecarousel.errMess}</Text>
-                </View>
-            );
-            }
         
         const renderDirectoryItem = ({item}) => {
             return (
@@ -72,20 +50,18 @@ class IDTechHome extends Component {
         }
      
         return (
-            <ScrollView>
-                <FlatList
-                    data={this.props.homepagecarousel.homepagecarousel}
-                    renderItem={renderCarouselDirectoryItem}
-                    keyExtractor={item => item.key.toString()}
-                />
+            <View>
+                <Carousel images = {this.props.homepagecarousel.homepagecarousel} />
                 <FlatList
                     data={this.props.homepagecards.homepagecards}
                     renderItem={renderDirectoryItem}
                     keyExtractor={item => item.id.toString()}
-                />
-            </ScrollView>
+                /> 
+            </View>
         );
-    }
+        }
+    }   
+   
     
-}
+
 export default connect(mapStateToProps)(IDTechHome);
