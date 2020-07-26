@@ -16,7 +16,7 @@ const mapStateToProps = state => {
 class IDTechRegister extends Component {
 
     static navigationOptions = {
-        title: 'IDTechRegister'
+        title: 'Login'
     }
 
     render() {

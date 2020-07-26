@@ -1,10 +1,4 @@
 import React, { Component } from 'react';
-import Home from './HomeComponent';
-import Directory from './DirectoryComponent';
-import CampsiteInfo from './CampsiteInfoComponent';
-import Reservation from './ReservationComponent';
-import About from './AboutComponent';
-import Contact from './ContactComponent';
 import IDTechHome from './IDTechHomeComponent';
 import IDTechWhyID from './IDTechWhyIDComponent';
 import IDTechOnline from './IDTechOnlineComponent';
@@ -17,13 +11,9 @@ import { createStackNavigator, createDrawerNavigator, DrawerItems } from 'react-
 import { Icon } from 'react-native-elements';
 import SafeAreaView from 'react-native-safe-area-view';
 import { connect } from 'react-redux';
-import { fetchCampsites, fetchComments, fetchPromotions,fetchPartners, fetchHomepagecards, fetchHomepagecarousel, fetchWhyidpage, fetchOnlinepage,  fetchOnlinepagecards, fetchLearningpage,fetchVirtualpage,fetchRegisterpage, fetchCoursespage, fetchCoursespagesidebar, fetchCoursespagesearchresults } from '../redux/ActionCreators';
+import { fetchHomepagecards, fetchHomepagecarousel, fetchWhyidpage, fetchOnlinepage,  fetchOnlinepagecards, fetchLearningpage,fetchVirtualpage,fetchRegisterpage, fetchCoursespage, fetchCoursespagesidebar, fetchCoursespagesearchresults } from '../redux/ActionCreators';
 
 const mapDispatchToProps = {
-    fetchCampsites,
-    fetchComments,
-    fetchPromotions,
-    fetchPartners,
     fetchHomepagecards,
     fetchHomepagecarousel, 
     fetchWhyidpage,
@@ -37,37 +27,10 @@ const mapDispatchToProps = {
     fetchCoursespagesearchresults
 };
 
-const DirectoryNavigator = createStackNavigator(
-    {
-        Directory: { 
-            screen: Directory,
-            navigationOptions: ({navigation}) => ({
-                headerLeft: <Icon
-                    name='list'
-                    type='font-awesome'
-                    iconStyle={styles.stackIcon}
-                    onPress={() => navigation.toggleDrawer()}
-                />
-            })
-        },
-        CampsiteInfo: { screen: CampsiteInfo }
-    },
-    {
-        initialRouteName: 'Directory',
-        navigationOptions: {
-            headerStyle: {
-                backgroundColor: '#7eb444'
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-                color: '#fff'
-            }
-        }
-    }
-);
+
 const HomeNavigator = createStackNavigator(
     {
-        Home: { screen: Home }
+        Home: { screen:  IDTechHome }
     },
     {
         navigationOptions: ({navigation}) => ({
@@ -87,31 +50,9 @@ const HomeNavigator = createStackNavigator(
         })
     }
 );
-const ReservationNavigator = createStackNavigator(
+const  WhyIDNavigator = createStackNavigator(
     {
-        Reservation: { screen: Reservation }
-    },
-    {
-        navigationOptions: ({navigation}) => ({
-            headerStyle: {
-                backgroundColor: '#7eb444'
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-                color: '#fff'
-            },
-            headerLeft: <Icon
-                name='tree'
-                type='font-awesome'
-                iconStyle={styles.stackIcon}
-                onPress={() => navigation.toggleDrawer()}
-            />
-        })
-    }
-);
-const AboutNavigator = createStackNavigator(
-    {
-        About: { screen: About }
+        WhyID: { screen: IDTechWhyID }
     },
     {
         navigationOptions: ({navigation}) => ({
@@ -132,98 +73,9 @@ const AboutNavigator = createStackNavigator(
     }
 );
 
-const ContactNavigator = createStackNavigator(
+const OnlineNavigator = createStackNavigator(
     {
-        Contact: { screen: Contact }
-    },
-    {
-        navigationOptions: ({navigation}) => ({
-            headerStyle: {
-                backgroundColor: '#7eb444'
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-                color: '#fff'
-            },
-            headerLeft: <Icon
-                name='address-card'
-                type='font-awesome'
-                iconStyle={styles.stackIcon}
-                onPress={() => navigation.toggleDrawer()}
-            />
-        })
-    }
-);
-
-const IDTechHomeNavigator = createStackNavigator(
-    {
-        IDTechHome: { screen:  IDTechHome }
-    },
-    {
-        navigationOptions: ({navigation}) => ({
-            headerStyle: {
-                backgroundColor: '#7eb444'
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-                color: '#fff'
-            },
-            headerLeft: <Icon
-                name='address-card'
-                type='font-awesome'
-                iconStyle={styles.stackIcon}
-                onPress={() => navigation.toggleDrawer()}
-            />
-        })
-    }
-);
-const  IDTechWhyIDNavigator = createStackNavigator(
-    {
-        IDTechWhyID: { screen: IDTechWhyID }
-    },
-    {
-        navigationOptions: ({navigation}) => ({
-            headerStyle: {
-                backgroundColor: '#7eb444'
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-                color: '#fff'
-            },
-            headerLeft: <Icon
-                name='address-card'
-                type='font-awesome'
-                iconStyle={styles.stackIcon}
-                onPress={() => navigation.toggleDrawer()}
-            />
-        })
-    }
-);
-// const IDTechOnlineNavigator = createStackNavigator(
-//     {
-//         IDTechOnline: { screen: IDTechOnline }
-//     },
-//     {
-//         navigationOptions: ({navigation}) => ({
-//             headerStyle: {
-//                 backgroundColor: '#7eb444'
-//             },
-//             headerTintColor: '#fff',
-//             headerTitleStyle: {
-//                 color: '#fff'
-//             },
-//             headerLeft: <Icon
-//                 name='address-card'
-//                 type='font-awesome'
-//                 iconStyle={styles.stackIcon}
-//                 onPress={() => navigation.toggleDrawer()}
-//             />
-//         })
-//     }
-// );
-const IDTechOnlineNavigator = createStackNavigator(
-    {
-        IDTechOnline: { 
+        Online: { 
             screen: IDTechOnline,
             navigationOptions: ({navigation}) => ({
                 headerLeft: <Icon
@@ -234,12 +86,12 @@ const IDTechOnlineNavigator = createStackNavigator(
                 />
             })
         },
-        IDTechVirtual: { screen: IDTechVirtual },
-        IDTechLearning: { screen: IDTechLearning },
+        Virtual: { screen: IDTechVirtual },
+        Learning: { screen: IDTechLearning },
 
     },
     {
-        initialRouteName: 'IDTechOnline',
+        initialRouteName: 'Online',
         navigationOptions: {
             headerStyle: {
                 backgroundColor: '#7eb444'
@@ -252,9 +104,9 @@ const IDTechOnlineNavigator = createStackNavigator(
     }
 );
 
-const IDTechCoursesNavigator = createStackNavigator(
+const CoursesNavigator = createStackNavigator(
     {
-        IDTechCourses: { screen: IDTechCourses }
+        Courses: { screen: IDTechCourses }
     },
     {
         navigationOptions: ({navigation}) => ({
@@ -274,9 +126,9 @@ const IDTechCoursesNavigator = createStackNavigator(
         })
     }
 );
-const IDTechRegisterNavigator = createStackNavigator(
+const LoginNavigator = createStackNavigator(
     {
-        IDTechRegister: { screen: IDTechRegister }
+        Login: { screen: IDTechRegister }
     },
     {
         navigationOptions: ({navigation}) => ({
@@ -288,7 +140,7 @@ const IDTechRegisterNavigator = createStackNavigator(
                 color: '#fff'
             },
             headerLeft: <Icon
-                name='address-card'
+                name='sign-in'
                 type='font-awesome'
                 iconStyle={styles.stackIcon}
                 onPress={() => navigation.toggleDrawer()}
@@ -316,10 +168,11 @@ const CustomDrawerContentComponent = props => (
 );
 
 const MainNavigator = createDrawerNavigator(
-    {
+    {        
         Home: {
             screen: HomeNavigator,
-            navigationOptions: {       
+            navigationOptions: {
+                drawerLabel: 'Home',
                 drawerIcon: ({tintColor}) => (
                     <Icon
                         name='home'
@@ -330,37 +183,10 @@ const MainNavigator = createDrawerNavigator(
                 )
             }
         },
-        Directory: {
-            screen: DirectoryNavigator,
+        WhyID: {
+            screen: WhyIDNavigator,
             navigationOptions: {
-                drawerIcon: ({tintColor}) => (
-                    <Icon
-                        name='list'
-                        type='font-awesome'
-                        size={24}
-                        color={tintColor}
-                    />
-                )
-            }
-        },
-        Reserve : {
-            screen: ReservationNavigator,
-            navigationOptions: {
-                drawerLabel: 'Reserve Campsite',
-                drawerIcon: ({tintColor}) => (
-                    <Icon
-                        name='tree'
-                        type='font-awesome'
-                        size={24}
-                        color={tintColor}
-                    />
-                )
-            }
-        },
-        About: {
-            screen: AboutNavigator,
-            navigationOptions: {
-                drawerLabel: 'About Us',
+                drawerLabel: 'Why ID Tech',
                 drawerIcon: ({tintColor}) => (
                     <Icon
                         name='info-circle'
@@ -371,10 +197,24 @@ const MainNavigator = createDrawerNavigator(
                 )
             }
         },
-        Contact: {
-            screen: ContactNavigator,
+        Online: {
+            screen: OnlineNavigator,
             navigationOptions: {
-                drawerLabel: 'Contact Us',
+                drawerLabel: 'Online',
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='list'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
+        Courses: {
+            screen: CoursesNavigator,
+            navigationOptions: {
+                drawerLabel: 'Courses',
                 drawerIcon: ({tintColor}) => (
                     <Icon
                         name='address-card'
@@ -385,69 +225,13 @@ const MainNavigator = createDrawerNavigator(
                 )
             }
         },
-        IDTechHome: {
-            screen: IDTechHomeNavigator,
+        Login: {
+            screen: LoginNavigator,
             navigationOptions: {
-                drawerLabel: 'IDTech Home',
+                drawerLabel: 'Login',
                 drawerIcon: ({tintColor}) => (
                     <Icon
-                        name='address-card'
-                        type='font-awesome'
-                        size={24}
-                        color={tintColor}
-                    />
-                )
-            }
-        },
-        IDTechWhyID: {
-            screen: IDTechWhyIDNavigator,
-            navigationOptions: {
-                drawerLabel: 'IDTech WhyID',
-                drawerIcon: ({tintColor}) => (
-                    <Icon
-                        name='address-card'
-                        type='font-awesome'
-                        size={24}
-                        color={tintColor}
-                    />
-                )
-            }
-        },
-        IDTechOnline: {
-            screen: IDTechOnlineNavigator,
-            navigationOptions: {
-                drawerLabel: 'IDTech Online',
-                drawerIcon: ({tintColor}) => (
-                    <Icon
-                        name='address-card'
-                        type='font-awesome'
-                        size={24}
-                        color={tintColor}
-                    />
-                )
-            }
-        },
-        IDTechCourses: {
-            screen: IDTechCoursesNavigator,
-            navigationOptions: {
-                drawerLabel: 'IDTech Courses',
-                drawerIcon: ({tintColor}) => (
-                    <Icon
-                        name='address-card'
-                        type='font-awesome'
-                        size={24}
-                        color={tintColor}
-                    />
-                )
-            }
-        },
-        IDTechRegister: {
-            screen: IDTechRegisterNavigator,
-            navigationOptions: {
-                drawerLabel: 'IDTech Register',
-                drawerIcon: ({tintColor}) => (
-                    <Icon
-                        name='address-card'
+                        name='sign-in'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
@@ -464,10 +248,6 @@ const MainNavigator = createDrawerNavigator(
 
 class Main extends Component {
     componentDidMount() {
-        this.props.fetchCampsites();
-        this.props.fetchComments();
-        this.props.fetchPromotions();
-        this.props.fetchPartners();
         this.props.fetchHomepagecards();
         this.props.fetchHomepagecarousel();
         this.props.fetchWhyidpage();
