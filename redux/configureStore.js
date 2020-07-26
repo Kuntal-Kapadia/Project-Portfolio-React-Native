@@ -10,6 +10,7 @@ import { Homepagecards } from './homepagecards';
 import { Homepagecarousel } from './homepagecarousel';
 import { whyidpage } from './whyidpage';
 import { Onlinepage } from './onlinepage';
+import { Onlinepagecards } from './onlinepagecards';
 import { Learningpage } from './learningpage';
 import { Virtualpage } from './virtualpage';
 import { Registerpage } from './registerpage';

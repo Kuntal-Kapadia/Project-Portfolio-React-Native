@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { Text, ScrollView } from 'react-native';
+import { Text, ScrollView, View, Dimensions, StyleSheet, ImageBackground} from 'react-native';
 import { Card } from 'react-native-elements';
 import { connect } from 'react-redux';
 
+const { width } = Dimensions.get('window');
+
+const height = width * 0.8;
 
 const mapStateToProps = state => {
     return {
@@ -18,18 +21,24 @@ class IDTechCourses extends Component {
     }
 
     render() {
+        const { navigate } = this.props.navigation;
+
         return (
+            <View
+                style={styles.scrollContainer}
+             >
             <ScrollView>
-                <Card
-                    wrapperStyle={{margin: 20}}
-                    title="IDTech Courses Page">
-                        <Text>Courses Screen for IDTech</Text>
-                        <Text>This will have the Courses page Info</Text>
-                        <Text style={{marginBottom: 10}}>USA</Text>
-                        <Text>I am just getting started...</Text>
-                        <Text>Genius I am ..</Text>
-                </Card>
+                <ImageBackground key={this.props.coursespage.coursespage.id} style={styles.image} source={{uri:this.props.coursespage.coursespage.headerimg}}>
+                        <Text style={styles.textStyle} >
+                            {this.props.coursespage.coursespage.headertxth}
+                        </Text>
+                        <Text style={styles.textStyleBottom} >
+                            {this.props.coursespage.coursespage.headertxtp}
+                        </Text>
+                </ImageBackground>          
+                
             </ScrollView>
+        </View>    
         );
     }
 }

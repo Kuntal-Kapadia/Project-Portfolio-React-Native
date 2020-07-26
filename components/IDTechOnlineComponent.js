@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { Text, ScrollView } from 'react-native';
+import { Text, ScrollView, View, Dimensions, StyleSheet, ImageBackground} from 'react-native';
 import { Card } from 'react-native-elements';
+import { baseUrl } from '../shared/baseUrl';
 import { connect } from 'react-redux';
 
+const { width } = Dimensions.get('window');
+
+const height = width * 0.8;
 
 const mapStateToProps = state => {
     return {
@@ -17,18 +21,24 @@ class IDTechOnline extends Component {
     }
 
     render() {
+        const { navigate } = this.props.navigation;
+
         return (
+            <View
+                style={styles.scrollContainer}
+             >
             <ScrollView>
-                <Card
-                    wrapperStyle={{margin: 20}}
-                    title="IDTech OnlinePage">
-                        <Text>Online Screen for IDTech</Text>
-                        <Text>This will have the Online page Info</Text>
-                        <Text style={{marginBottom: 10}}>USA</Text>
-                        <Text>I am just getting started...</Text>
-                        <Text>Genius I am ..</Text>
-                </Card>
+                <ImageBackground key={this.props.onlinepage.onlinepage.id} style={styles.image} source={{uri:baseUrl +this.props.onlinepage.onlinepage.headerimg}}>
+                        <Text style={styles.textStyle} >
+                            {this.props.onlinepage.onlinepage.headertxth}
+                        </Text>
+                        <Text style={styles.textStyleBottom} >
+                            {this.props.onlinepage.onlinepage.headertxtp}
+                        </Text>
+                </ImageBackground>          
+                
             </ScrollView>
+        </View>    
         );
     }
 }
