@@ -158,9 +158,6 @@ const CustomDrawerContentComponent = props => (
                 <View style={{flex: 1}}>
                     <Image source={require('./images/id-logo.png')} style={styles.drawerImage} />
                 </View>
-                {/* <View style={{flex: 2}}>
-                    <Text style={styles.drawerHeaderText}></Text>
-                </View> */}
             </View>
             <DrawerItems {...props} />
         </SafeAreaView>
@@ -242,7 +239,19 @@ const MainNavigator = createDrawerNavigator(
     },
     {
         drawerBackgroundColor: '#7eb444',            
-        contentComponent: CustomDrawerContentComponent
+        contentComponent: CustomDrawerContentComponent,
+        contentOptions: {
+            activeTintColor: 'white',
+            itemsContainerStyle: {
+              marginVertical: 0,
+            },
+            iconContainerStyle: {
+              opacity: 1
+            },
+            labelStyle :{
+                fontSize : 17
+            }
+          }
     }
 );
 
@@ -278,7 +287,7 @@ const styles = StyleSheet.create({
     },
     drawerHeader: {
         backgroundColor: 'blue',
-        height: 140,
+        height: 180,
         alignItems: 'center',
         justifyContent: 'center',
         flex: 1,
@@ -286,11 +295,11 @@ const styles = StyleSheet.create({
     },
     drawerHeaderText: {
         color: '#fff',
-        fontSize: 24,
+        fontSize: 30,
         fontWeight: 'bold'
     },
     drawerImage: {
-        margin: 10,
+        margin: 20,
         height: 70,
         width: 200
     },

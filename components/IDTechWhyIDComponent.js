@@ -34,7 +34,8 @@ class IDTechWhyID extends Component {
                         <Text style={styles.textStyleBottom} >
                             {this.props.whyidpage.whyidpage.headertxtp}
                         </Text>
-                </ImageBackground>          
+                </ImageBackground>   
+                       
                 
             </ScrollView>
         </View>    
