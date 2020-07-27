@@ -4,6 +4,7 @@ import IDTechWhyID from './IDTechWhyIDComponent';
 import IDTechOnline from './IDTechOnlineComponent';
 import IDTechCourses from './IDTechCoursesComponent';
 import IDTechRegister from './IDTechRegisterComponent';
+import IDTechLogin from './IDTechLoginComponent';
 import IDTechVirtual from './IDTechVirtualComponent';
 import IDTechLearning from './IDTechLearningComponent';
 import { View, Platform, StyleSheet, Text, ScrollView,Image } from 'react-native';
@@ -126,9 +127,31 @@ const CoursesNavigator = createStackNavigator(
         })
     }
 );
+// const LoginNavigator = createStackNavigator(
+//     {
+//         Login: { screen: IDTechRegister }
+//     },
+//     {
+//         navigationOptions: ({navigation}) => ({
+//             headerStyle: {
+//                 backgroundColor: '#7eb444'
+//             },
+//             headerTintColor: '#fff',
+//             headerTitleStyle: {
+//                 color: '#fff'
+//             },
+//             headerLeft: <Icon
+//                 name='sign-in'
+//                 type='font-awesome'
+//                 iconStyle={styles.stackIcon}
+//                 onPress={() => navigation.toggleDrawer()}
+//             />
+//         })
+//     }
+// );
 const LoginNavigator = createStackNavigator(
     {
-        Login: { screen: IDTechRegister }
+        Login: { screen: IDTechLogin }
     },
     {
         navigationOptions: ({navigation}) => ({
@@ -165,7 +188,20 @@ const CustomDrawerContentComponent = props => (
 );
 
 const MainNavigator = createDrawerNavigator(
-    {        
+    {          
+        Login: {
+            screen: LoginNavigator,
+            navigationOptions: {
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='sign-in'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
         Home: {
             screen: HomeNavigator,
             navigationOptions: {
@@ -222,22 +258,23 @@ const MainNavigator = createDrawerNavigator(
                 )
             }
         },
-        Login: {
-            screen: LoginNavigator,
-            navigationOptions: {
-                drawerLabel: 'Login',
-                drawerIcon: ({tintColor}) => (
-                    <Icon
-                        name='sign-in'
-                        type='font-awesome'
-                        size={24}
-                        color={tintColor}
-                    />
-                )
-            }
-        }
+        // Login: {
+        //     screen: LoginNavigator,
+        //     navigationOptions: {
+        //         drawerLabel: 'Login',
+        //         drawerIcon: ({tintColor}) => (
+        //             <Icon
+        //                 name='sign-in'
+        //                 type='font-awesome'
+        //                 size={24}
+        //                 color={tintColor}
+        //             />
+        //         )
+        //     }
+        // }
     },
     {
+        initialRouteName: 'Home',
         drawerBackgroundColor: '#7eb444',            
         contentComponent: CustomDrawerContentComponent,
         contentOptions: {
