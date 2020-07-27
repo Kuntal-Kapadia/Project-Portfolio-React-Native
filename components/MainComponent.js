@@ -3,8 +3,8 @@ import IDTechHome from './IDTechHomeComponent';
 import IDTechWhyID from './IDTechWhyIDComponent';
 import IDTechOnline from './IDTechOnlineComponent';
 import IDTechCourses from './IDTechCoursesComponent';
-import IDTechRegister from './IDTechRegisterComponent';
-import IDTechLogin from './IDTechLoginComponent';
+import Contact from './IDTechContactComponent';
+import Login from './IDTechLoginComponent';
 import IDTechVirtual from './IDTechVirtualComponent';
 import IDTechLearning from './IDTechLearningComponent';
 import { View, Platform, StyleSheet, Text, ScrollView,Image } from 'react-native';
@@ -65,7 +65,7 @@ const  WhyIDNavigator = createStackNavigator(
                 color: '#fff'
             },
             headerLeft: <Icon
-                name='info-circle'
+                name='heart'
                 type='font-awesome'
                 iconStyle={styles.stackIcon}
                 onPress={() => navigation.toggleDrawer()}
@@ -119,6 +119,28 @@ const CoursesNavigator = createStackNavigator(
                 color: '#fff'
             },
             headerLeft: <Icon
+                name='info-circle'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
+    }
+);
+const ContactNavigator = createStackNavigator(
+    {
+        Login: { screen: IDTechContact }
+    },
+    {
+        navigationOptions: ({navigation}) => ({
+            headerStyle: {
+                backgroundColor: '#7eb444'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            },
+            headerLeft: <Icon
                 name='address-card'
                 type='font-awesome'
                 iconStyle={styles.stackIcon}
@@ -127,28 +149,6 @@ const CoursesNavigator = createStackNavigator(
         })
     }
 );
-// const LoginNavigator = createStackNavigator(
-//     {
-//         Login: { screen: IDTechRegister }
-//     },
-//     {
-//         navigationOptions: ({navigation}) => ({
-//             headerStyle: {
-//                 backgroundColor: '#7eb444'
-//             },
-//             headerTintColor: '#fff',
-//             headerTitleStyle: {
-//                 color: '#fff'
-//             },
-//             headerLeft: <Icon
-//                 name='sign-in'
-//                 type='font-awesome'
-//                 iconStyle={styles.stackIcon}
-//                 onPress={() => navigation.toggleDrawer()}
-//             />
-//         })
-//     }
-// );
 const LoginNavigator = createStackNavigator(
     {
         Login: { screen: IDTechLogin }
@@ -222,7 +222,7 @@ const MainNavigator = createDrawerNavigator(
                 drawerLabel: 'Why ID Tech',
                 drawerIcon: ({tintColor}) => (
                     <Icon
-                        name='info-circle'
+                        name='heart'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
@@ -250,7 +250,7 @@ const MainNavigator = createDrawerNavigator(
                 drawerLabel: 'Courses',
                 drawerIcon: ({tintColor}) => (
                     <Icon
-                        name='address-card'
+                        name='info-circle'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
@@ -258,20 +258,20 @@ const MainNavigator = createDrawerNavigator(
                 )
             }
         },
-        // Login: {
-        //     screen: LoginNavigator,
-        //     navigationOptions: {
-        //         drawerLabel: 'Login',
-        //         drawerIcon: ({tintColor}) => (
-        //             <Icon
-        //                 name='sign-in'
-        //                 type='font-awesome'
-        //                 size={24}
-        //                 color={tintColor}
-        //             />
-        //         )
-        //     }
-        // }
+        Contact: {
+            screen: ContactNavigator,
+            navigationOptions: {
+                drawerLabel: 'Contact Us',
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='address-card'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        }
     },
     {
         initialRouteName: 'Home',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, StyleSheet, ScrollView, Image} from 'react-native';
 import { Input, CheckBox, Button, Icon } from 'react-native-elements';
 import * as SecureStore from 'expo-secure-store';
 import * as ImagePicker from 'expo-image-picker';
@@ -56,7 +56,10 @@ class LoginTab extends Component {
     }
 
     render() {
+
         return (
+  
+
             <View style={styles.container}>
                 <Input
                     placeholder='Username'
@@ -116,6 +119,7 @@ class LoginTab extends Component {
                     />
                 </View> */}
             </View>
+
         );
     }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, ScrollView, View, Dimensions, StyleSheet, ImageBackground} from 'react-native';
+import { Text, ScrollView, View, Dimensions, StyleSheet, ImageBackground, WebView} from 'react-native';
 import { Card } from 'react-native-elements';
 import { connect } from 'react-redux';
 
@@ -35,7 +35,7 @@ class IDTechWhyID extends Component {
                             {this.props.whyidpage.whyidpage.headertxtp}
                         </Text>
                 </ImageBackground>   
-                       
+                     
                 
             </ScrollView>
         </View>    
