@@ -23,10 +23,9 @@ class IDTechWhyID extends Component {
         const { navigate } = this.props.navigation;
 
         return (
-            <View
+            <ScrollView
                 style={styles.scrollContainer}
              >
-            <ScrollView>
                 <ImageBackground key={this.props.whyidpage.whyidpage.id} style={styles.image} source={{uri:this.props.whyidpage.whyidpage.headerimg}}>
                         <Text style={styles.textStyle} >
                             {this.props.whyidpage.whyidpage.headertxth}
@@ -35,10 +34,40 @@ class IDTechWhyID extends Component {
                             {this.props.whyidpage.whyidpage.headertxtp}
                         </Text>
                 </ImageBackground>   
-                     
+                <Card
+                    title="iDTech is the Best"
+                    image={{uri: this.props.whyidpage.whyidpage.img1}}>
+                    <Text
+                        style={{margin: 10}}>
+                        "More Text with idTech Proposition"
+                    </Text>    
+                </Card>    
+                <Card
+                    title="iDTech is the Best"
+                    image={{uri: this.props.whyidpage.whyidpage.img2}}>
+                    <Text
+                        style={{margin: 10}}>
+                        "More Text with idTech Proposition"
+                    </Text>    
+                </Card>    
+                <Card
+                    title="iDTech is the Best"
+                    image={{uri: this.props.whyidpage.whyidpage.img3}}>
+                    <Text
+                        style={{margin: 10}}>
+                        "More Text with idTech Proposition"
+                    </Text>    
+                </Card>    
+                <Card
+                    title="iDTech is the Best"
+                    image={{uri: this.props.whyidpage.whyidpage.img4}}>
+                    <Text
+                        style={{margin: 10}}>
+                        "More Text with idTech Proposition"
+                    </Text>    
+                </Card>    
                 
-            </ScrollView>
-        </View>    
+        </ScrollView>    
         );
     }
 }

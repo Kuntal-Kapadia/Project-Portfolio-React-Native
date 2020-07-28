@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Text, ScrollView, View, Dimensions, StyleSheet, ImageBackground} from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
-import * as Animatable from 'react-native-animatable';
 import * as MailComposer from 'expo-mail-composer';
 
 const { width } = Dimensions.get('window');
@@ -33,24 +32,24 @@ class Contact extends Component {
         return (
             
             <ScrollView>
-                {/* <ImageBackground key={this.props.registerpage.registerpage.id} style={styles.image} source={{uri:this.props.registerpage.registerpage.headerimg}}>
+                <ImageBackground key={this.props.registerpage.registerpage.id} style={styles.image} source={{uri:this.props.registerpage.registerpage.headerimg}}>
                         <Text style={styles.textStyle} >
                             {this.props.registerpage.registerpage.headertxth}
                         </Text>
                         <Text style={styles.textStyleBottom} >
                             {this.props.registerpage.registerpage.headertxtp}
                         </Text>
-                </ImageBackground>           */}
+                </ImageBackground>          
 
-                <Animatable.View animation='fadeInDown' duration={2000} delay={1000}>
                 <Card
                     wrapperStyle={{margin: 20}}
-                    title="Contact Information">
-                            <Text>1 Nucamp Way</Text>
-                            <Text>Seattle, WA 98001</Text>
-                            <Text style={{marginBottom: 10}}>USA</Text>
-                            <Text>Phone: 1-206-555-1234</Text>
-                            <Text>Email: campsites@nucamp.co</Text>
+                    // title="Contact Information"
+                    >
+                            <Text>ID TECH Corporate Headquarters</Text>
+                            <Text>10721 Walker Street Cypress,</Text>
+                            <Text style={{marginBottom: 10}}> CA 90630-4720, USA</Text>
+                            <Text>Phone: +1 408-871-3700</Text>
+                            <Text>Email: hello@iDTech.com</Text>
                             <Button
                             title="Send Email"
                             buttonStyle={{backgroundColor: '#7eb444', margin: 40}}
@@ -63,7 +62,6 @@ class Contact extends Component {
                             onPress={() => this.sendMail()}
                         />
                 </Card>
-                </Animatable.View>
 
             </ScrollView>
         

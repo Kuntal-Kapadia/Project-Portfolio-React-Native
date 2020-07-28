@@ -135,7 +135,7 @@ class RegisterTab extends Component{
             lastname: '',
             email: '',
             remember: false,
-            imageUrl: baseUrl + 'images/logo.png'
+            imageUrl: baseUrl + './images/idlogo.png'
         };
 
     }
@@ -203,22 +203,25 @@ class RegisterTab extends Component{
         }
     }
     render(){
+
         return(
             <ScrollView>
                 <View style={styles.container}>
                     <View style={styles.imageContainer}>
                         <Image
                             source={{uri: this.state.imageUrl}}
-                            loadingIndicatorSource={require('./images/logo.png')}
+                            loadingIndicatorSource={require('./images/idlogo.png')}
                             style={styles.image}
                         />
                         <Button
                             title='Camera'
                             onPress={this.getImageFromCamera}
+                            buttonStyle={{backgroundColor: 'green'}}
                         />
                         <Button
                             title='Gallery'
                             onPress={this.getImageFromGallery}
+                            buttonStyle={{backgroundColor: 'green'}}
                         />
                     </View>
                     <Input

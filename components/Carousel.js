@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, StyleSheet, Dimensions, ImageBackground } from 'react-native';
-import { Card } from 'react-native-elements';
+// import { Card } from 'react-native-elements';
 
 const { width } = Dimensions.get('window');
 

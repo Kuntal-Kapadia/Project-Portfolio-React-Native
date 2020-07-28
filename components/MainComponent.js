@@ -9,7 +9,7 @@ import IDTechVirtual from './IDTechVirtualComponent';
 import IDTechLearning from './IDTechLearningComponent';
 import { View, Platform, StyleSheet, Text, ScrollView,Image } from 'react-native';
 import { createStackNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
-import { Icon } from 'react-native-elements';
+import { Icon, Button } from 'react-native-elements';
 import SafeAreaView from 'react-native-safe-area-view';
 import { connect } from 'react-redux';
 import { fetchHomepagecards, fetchHomepagecarousel, fetchWhyidpage, fetchOnlinepage,  fetchOnlinepagecards, fetchLearningpage,fetchVirtualpage,fetchRegisterpage, fetchCoursespage, fetchCoursespagesidebar, fetchCoursespagesearchresults } from '../redux/ActionCreators';
@@ -76,32 +76,24 @@ const  WhyIDNavigator = createStackNavigator(
 
 const OnlineNavigator = createStackNavigator(
     {
-        Online: { 
-            screen: IDTechOnline,
-            navigationOptions: ({navigation}) => ({
-                headerLeft: <Icon
-                    name='list'
-                    type='font-awesome'
-                    iconStyle={styles.stackIcon}
-                    onPress={() => navigation.toggleDrawer()}
-                />
-            })
-        },
-        Virtual: { screen: IDTechVirtual },
-        Learning: { screen: IDTechLearning },
-
+        Courses: { screen: IDTechOnline }
     },
     {
-        initialRouteName: 'Online',
-        navigationOptions: {
+        navigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#7eb444'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
                 color: '#fff'
-            }
-        }
+            },
+            headerLeft: <Icon
+                name='list'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
     }
 );
 
@@ -129,7 +121,7 @@ const CoursesNavigator = createStackNavigator(
 );
 const ContactNavigator = createStackNavigator(
     {
-        Login: { screen: IDTechContact }
+        Contact: { screen: Contact }
     },
     {
         navigationOptions: ({navigation}) => ({
@@ -151,7 +143,7 @@ const ContactNavigator = createStackNavigator(
 );
 const LoginNavigator = createStackNavigator(
     {
-        Login: { screen: IDTechLogin }
+        Login: { screen: Login }
     },
     {
         navigationOptions: ({navigation}) => ({
@@ -171,7 +163,50 @@ const LoginNavigator = createStackNavigator(
         })
     }
 );
-
+const VirtualNavigator = createStackNavigator(
+    {
+        Virtual: { screen: IDTechVirtual }
+    },
+    {
+        navigationOptions: ({navigation}) => ({
+            headerStyle: {
+                backgroundColor: '#7eb444'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            },
+            headerLeft: <Icon
+                name='laptop'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
+    }
+);
+const LearningNavigator = createStackNavigator(
+    {
+        Learning: { screen: IDTechLearning }
+    },
+    {
+        navigationOptions: ({navigation}) => ({
+            headerStyle: {
+                backgroundColor: '#7eb444'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            },
+            headerLeft: <Icon
+                name='institution'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
+    }
+);
 const CustomDrawerContentComponent = props => (
     <ScrollView>
         <SafeAreaView 
@@ -182,11 +217,127 @@ const CustomDrawerContentComponent = props => (
                     <Image source={require('./images/id-logo.png')} style={styles.drawerImage} />
                 </View>
             </View>
-            <DrawerItems {...props} />
+            <DrawerItems {...props} />   
         </SafeAreaView>
     </ScrollView>
 );
 
+const CustomDrawerContentComponentforOnline = props => (
+    <ScrollView>
+        <SafeAreaView 
+            style={styles.container}
+            forceInset={{top: 'always', horizontal: 'never'}}>
+            <View style={styles.drawerHeader}>
+                {/* <View style={{flex: 1}}>
+                    {/* <Image source={require('./images/logo-id.png')} style={styles.drawerImage} /> */}
+                    {/* <Icon
+                        name='list'
+                        type='font-awesome'
+                        iconStyle={styles.stackIcon}
+                        onPress={() => {
+                            // Navigate using the `navigation` prop that you received
+                            props.navigation.navigate('Home');
+                        }}
+                    />
+                </View>
+                <View style={{flex: 2}}>
+                    <Text style={styles.drawerHeaderText}>Online Options</Text>
+                </View> */}
+               <Image source={require('./images/idlogo.png')} style={{marginRight:8}}/>
+            
+                <Text style={styles.drawerHeaderText}>Online Options</Text>
+            </View>
+           
+            <DrawerItems {...props} />
+            <View >
+                <Button
+                    title="Home"
+                    icon={
+                        <Icon
+                            name='home'
+                            type='font-awesome'
+                            color='black'
+                            size={30}
+                            iconStyle={{marginRight: 25}}
+                        />
+                    }
+                    titleStyle={{color:'black', fontSize:17, fontWeight:'bold'}}
+                    
+                    onPress={() => {
+                        // Navigate using the `navigation` prop that you received
+                        props.navigation.navigate('Home');
+                    }}
+                    buttonStyle={{backgroundColor: '#7eb444', justifyContent: 'flex-start', alignItems:'flex-start', marginLeft:8}}
+                
+                />
+            </View>
+        </SafeAreaView>
+    </ScrollView>
+);
+const OnlineSampleNavigator = createDrawerNavigator(
+    {
+        Sample: {
+            screen: OnlineNavigator,
+            navigationOptions: {
+                drawerLabel: 'Private Lessons',
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='list'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
+        Virtual: {
+            screen: VirtualNavigator,
+            navigationOptions: {
+                drawerLabel: 'Virtual Camps',
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='laptop'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+         },
+        Learning: {
+            screen:LearningNavigator,
+            navigationOptions: {
+                drawerLabel: 'Group Lessons',
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='institution'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        }
+
+    }, 
+    {
+        initialRouteName: 'Sample',
+        drawerBackgroundColor: '#7eb444',          
+        contentComponent: CustomDrawerContentComponentforOnline,
+        contentOptions: {
+            activeTintColor: 'white',
+            itemsContainerStyle: {
+            marginVertical: 0,
+            },
+            iconContainerStyle: {
+            opacity: 1
+            },
+            labelStyle :{
+                fontSize : 17
+            }
+        }
+    }
+);
 const MainNavigator = createDrawerNavigator(
     {          
         Login: {
@@ -231,9 +382,9 @@ const MainNavigator = createDrawerNavigator(
             }
         },
         Online: {
-            screen: OnlineNavigator,
+            screen: OnlineSampleNavigator,
             navigationOptions: {
-                drawerLabel: 'Online',
+                drawerLabel: 'Online Options',
                 drawerIcon: ({tintColor}) => (
                     <Icon
                         name='list'
@@ -271,7 +422,8 @@ const MainNavigator = createDrawerNavigator(
                     />
                 )
             }
-        }
+        },
+       
     },
     {
         initialRouteName: 'Home',
@@ -307,6 +459,7 @@ class Main extends Component {
         this.props.fetchRegisterpage()    
     }
     render() {
+       
         return (
             <View style={{
                 flex: 1,
@@ -332,8 +485,11 @@ const styles = StyleSheet.create({
     },
     drawerHeaderText: {
         color: '#fff',
-        fontSize: 30,
-        fontWeight: 'bold'
+        fontSize: 25,
+        fontWeight: 'bold',
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: {width: -1, height: 1},
+        textShadowRadius: 10
     },
     drawerImage: {
         margin: 20,
@@ -343,7 +499,7 @@ const styles = StyleSheet.create({
     stackIcon: {
         marginLeft: 10,
         color: '#fff',
-        fontSize: 24
+        fontSize: 30, 
     }
 });
 export default connect(null, mapDispatchToProps)(Main);

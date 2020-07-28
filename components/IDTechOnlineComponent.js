@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, ScrollView, View, Dimensions, StyleSheet, ImageBackground, FlatList} from 'react-native';
-import { Card, Tile} from 'react-native-elements';
+import { Card, Button, Icon} from 'react-native-elements';
 import { baseUrl } from '../shared/baseUrl';
 import { connect } from 'react-redux';
 
@@ -18,7 +18,7 @@ const mapStateToProps = state => {
 class IDTechOnline extends Component {
 
     static navigationOptions = {
-        title: 'Online'
+        title: 'Private Lessons'
     }
 
     render() {
@@ -75,6 +75,22 @@ class IDTechOnline extends Component {
                     renderItem={renderDirectoryItem}
                     keyExtractor={item => item.id.toString()}
                 />
+                <Button
+                    title="Click for information on Virtual Camps"
+                    icon={
+                        <Icon
+                            name='laptop'
+                            type='font-awesome'
+                            color='black'
+                            size={30}
+                            iconStyle={{marginRight: 25}}
+                        />
+                    }
+                    titleStyle={{color:'black', fontSize:17, fontWeight:'bold'}}
+                    
+                    onPress={() => navigate('Virtual')}
+                    buttonStyle={{backgroundColor: '#7eb444', justifyContent: 'flex-start', alignItems:'flex-start'}}
+                    />
         </ScrollView>    
         );
     }
