@@ -228,23 +228,7 @@ const CustomDrawerContentComponentforOnline = props => (
             style={styles.container}
             forceInset={{top: 'always', horizontal: 'never'}}>
             <View style={styles.drawerHeader}>
-                {/* <View style={{flex: 1}}>
-                    {/* <Image source={require('./images/logo-id.png')} style={styles.drawerImage} /> */}
-                    {/* <Icon
-                        name='list'
-                        type='font-awesome'
-                        iconStyle={styles.stackIcon}
-                        onPress={() => {
-                            // Navigate using the `navigation` prop that you received
-                            props.navigation.navigate('Home');
-                        }}
-                    />
-                </View>
-                <View style={{flex: 2}}>
-                    <Text style={styles.drawerHeaderText}>Online Options</Text>
-                </View> */}
-               <Image source={require('./images/idlogo.png')} style={{marginRight:8}}/>
-            
+               <Image source={require('./images/idlogo.png')} style={{marginRight:8}}/>          
                 <Text style={styles.drawerHeaderText}>Online Options</Text>
             </View>
            

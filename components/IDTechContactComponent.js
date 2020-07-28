@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Text, ScrollView, View, Dimensions, StyleSheet, ImageBackground} from 'react-native';
-import { Card, Button, Icon } from 'react-native-elements';
+import { Text, ScrollView, View, Dimensions, StyleSheet, ImageBackground, Image, Linking} from 'react-native';
+import { Card, Button, Icon, SocialIcon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import * as MailComposer from 'expo-mail-composer';
+import { learningpageLoading } from '../redux/ActionCreators';
 
 const { width } = Dimensions.get('window');
 
@@ -42,27 +43,61 @@ class Contact extends Component {
                 </ImageBackground>          
 
                 <Card
-                    wrapperStyle={{margin: 20}}
-                    // title="Contact Information"
-                    >
-                            <Text>ID TECH Corporate Headquarters</Text>
+                    style={{alignItems:'center'}}
+                >
+                    <View style={styles.socialContainer}>
+                        <View style={{flex: 1}}>
+                            <Image source={require('./images/idtech.png')} style={{marginRight:5,height:120, width:100}}/> 
+                        </View>
+                        <View style={{flex: 2}}>
+                            <Text>iDTech Corporate Headquarters</Text>
                             <Text>10721 Walker Street Cypress,</Text>
-                            <Text style={{marginBottom: 10}}> CA 90630-4720, USA</Text>
-                            <Text>Phone: +1 408-871-3700</Text>
-                            <Text>Email: hello@iDTech.com</Text>
-                            <Button
-                            title="Send Email"
-                            buttonStyle={{backgroundColor: '#7eb444', margin: 40}}
-                            icon={<Icon
-                                name='envelope-o'
-                                type='font-awesome'
-                                color='#fff'
-                                iconStyle={{marginRight: 10}}
-                            />}
-                            onPress={() => this.sendMail()}
+                            <Text> CA 90630-4720, USA</Text>
+                            <View style={styles.socialContainer}>
+                                <Icon
+                                    name='phone'
+                                    type='font-awesome'
+                                    size={20}
+                                    iconStyle={styles.stackIcon}
+                                />
+                                <Text>Phone: +1 408-871-3700</Text>
+                            </View>
+                            <View style={styles.socialContainer}>
+                                <Icon
+                                    name='envelope-o'
+                                    type='font-awesome'
+                                    iconStyle={styles.stackIcon}
+                                    onPress={() => this.sendMail()}
+                                />
+                                <Text>Email: hello@iDTech.com</Text>
+                            </View>
+                        </View>
+                    </View>
+                   
+                <View style={styles.socialContainer}>
+                        <SocialIcon
+                            type='twitter'
+                            style={styles.socialImage}
+                            onPress={() =>Linking.openURL('https://twitter.com/idtechcamps')}
                         />
+                        <SocialIcon
+                            type='facebook'
+                            style={styles.socialImage}
+                            onPress={() =>Linking.openURL('https://www.facebook.com/computercamps')}
+                        />
+                        <SocialIcon
+                            type='instagram'
+                            style={styles.socialImage}
+                            onPress={() =>Linking.openURL('https://www.instagram.com/idtech/')}
+                        />
+                        <SocialIcon
+                            type='youtube'
+                            style={styles.socialImage}
+                            onPress={() =>Linking.openURL('https://www.youtube.com/channel/UCxfgxJx4I7krS0mykkN-A9Q')}
+                        />
+                    </View>
                 </Card>
-
+                
             </ScrollView>
         
         );
@@ -98,6 +133,26 @@ const styles = StyleSheet.create({
         textShadowColor: 'rgba(0, 0, 0, 0.75)',
         textShadowOffset: {width: -1, height: 1},
         textShadowRadius: 10
+    }, 
+    socialContainer: {
+        // backgroundColor: 'green',
+        // height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1,
+        flexDirection: 'row'
+    },
+    socialImage: {
+        marginTop: 30,
+        marginRight: 20,
+        marginLeft: 20,
+        height: 40,
+        width: 40
+    },
+    stackIcon: {
+        marginRight: 10,
+        fontSize: 24,
+        color:"black"
     }
   });
 

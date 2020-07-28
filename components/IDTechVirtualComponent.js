@@ -39,7 +39,7 @@ class IDTechVirtual extends Component {
                     <Text style={styles.textHeaderStyle}>Online Private Lesson</Text> 
                     <Text style={styles.textParaStyle}>Learn to code. Discover AI. Mod Minecraft. Create with Roblox. Develop a video game with Unreal.</Text> 
                     <Text style={styles.textParaStyle}>Your child can choose from one of our themes, or customize their own! With 1-on-1 attention from our iD Certified Instructors, they’ll build in-demand skills and create a completely personalized project—all from the comfort of home.</Text>
-                    <Text style={styles.textParaStyle} >For all skill levels, ages 7-19.</Text>
+                    {/* <Text style={styles.textParaStyle} >For all skill levels, ages 7-19.</Text> */}
                 </View>
                 <Tile
                     title="Details... lorem ipsum"
