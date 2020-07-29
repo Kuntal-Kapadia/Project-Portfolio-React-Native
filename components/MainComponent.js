@@ -76,7 +76,7 @@ const  WhyIDNavigator = createStackNavigator(
 
 const OnlineNavigator = createStackNavigator(
     {
-        Courses: { screen: IDTechOnline }
+        Online: { screen: IDTechOnline }
     },
     {
         navigationOptions: ({navigation}) => ({
@@ -260,7 +260,7 @@ const CustomDrawerContentComponentforOnline = props => (
 );
 const OnlineSampleNavigator = createDrawerNavigator(
     {
-        Sample: {
+        Online: {
             screen: OnlineNavigator,
             navigationOptions: {
                 drawerLabel: 'Private Lessons',
@@ -282,7 +282,7 @@ const OnlineSampleNavigator = createDrawerNavigator(
                     <Icon
                         name='laptop'
                         type='font-awesome'
-                        size={24}
+                        size={25}
                         color={tintColor}
                     />
                 )
@@ -305,7 +305,7 @@ const OnlineSampleNavigator = createDrawerNavigator(
 
     }, 
     {
-        initialRouteName: 'Sample',
+        initialRouteName: 'Online',
         drawerBackgroundColor: '#7eb444',          
         contentComponent: CustomDrawerContentComponentforOnline,
         contentOptions: {

@@ -47,7 +47,7 @@ class IDTechLearning extends Component {
                     title=""
                     caption="CLICK here for information on Private Lessons"
                     featured
-                    onPress={() => navigate('Sample')}
+                    onPress={() => navigate('Online')}
                     titleStyle={{fontSize:30,fontWeight:'bold',color:'white'}}
                     captionStyle={{fontSize:30,fontWeight:'bold',color:'white',textShadowColor: 'rgba(0, 0, 0, 0.75)',
                     textShadowOffset: {width: -1, height: 1},
@@ -83,7 +83,7 @@ class IDTechLearning extends Component {
                         title=""
                         caption="CLICK here for information on Private Lessons"
                         featured
-                        onPress={() => navigate('Sample')}
+                        onPress={() => navigate('Online')}
                         titleStyle={{fontSize:30,fontWeight:'bold',color:'white'}}
                     captionStyle={{fontSize:30,fontWeight:'bold',color:'white', textShadowColor: 'rgba(0, 0, 0, 0.75)',
                     textShadowOffset: {width: -1, height: 1},
